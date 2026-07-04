@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos e Insumos | Cervejaria Maddock</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">
+      <div>
+        <h1>Cervejaria Maddock</h1>
+        <div class="subtitulo">Produtos e Insumos</div>
+      </div>
+    </div>
+    <div class="usuario-logado">
+      <a href="menu.html" style="color: var(--cor-texto-suave); text-decoration: none; font-size: 13px;">&larr; Menu</a>
+      <span id="nomeUsuario">-</span>
+      <button class="botao-sair" id="botaoSair">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <div class="abas">
+      <button class="aba ativa" id="abaProdutos" data-aba="produtos">Produtos</button>
+      <button class="aba" id="abaInsumos" data-aba="insumos">Insumos</button>
+    </div>
+
+    <!-- ================= PRODUTOS ================= -->
+    <section id="secaoProdutos">
+      <div class="barra-acoes">
+        <input type="text" class="campo-busca" id="buscaProduto" placeholder="Buscar produto por nome...">
+        <button class="botao-primario" style="width: auto;" id="botaoNovoProduto">+ Novo Produto</button>
+      </div>
+      <div class="painel">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Estilo</th>
+              <th>Preco (R$)</th>
+              <th>Estoque</th>
+              <th>Situacao</th>
+              <th>Acoes</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabelaProdutos"></tbody>
+        </table>
+        <div class="vazio" id="vazioProdutos" style="display: none;">Nenhum produto cadastrado ainda.</div>
+      </div>
+    </section>
+
+    <!-- ================= INSUMOS ================= -->
+    <section id="secaoInsumos" style="display: none;">
+      <div class="barra-acoes">
+        <input type="text" class="campo-busca" id="buscaInsumo" placeholder="Buscar insumo por nome...">
+        <button class="botao-primario" style="width: auto;" id="botaoNovoInsumo">+ Novo Insumo</button>
+      </div>
+      <div class="painel">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Unidade</th>
+              <th>Qtd. Estoque</th>
+              <th>Estoque Minimo</th>
+              <th>Situacao</th>
+              <th>Acoes</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabelaInsumos"></tbody>
+        </table>
+        <div class="vazio" id="vazioInsumos" style="display: none;">Nenhum insumo cadastrado ainda.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= MODAL PRODUTO ================= -->
+  <div class="fundo-modal" id="modalProduto">
+    <div class="modal">
+      <h2 id="tituloModalProduto">Novo Produto</h2>
+      <form id="formProduto">
+        <input type="hidden" id="produtoId">
+        <div class="campo">
+          <label for="produtoNome">Nome</label>
+          <input type="text" id="produtoNome" required>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="produtoEstilo">Estilo</label>
+            <input type="text" id="produtoEstilo" placeholder="IPA, Pilsen, Stout..." required>
+          </div>
+          <div class="campo">
+            <label for="produtoPreco">Preco de venda (R$)</label>
+            <input type="number" id="produtoPreco" step="0.01" min="0.01" required>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="produtoDescricao">Descricao</label>
+          <input type="text" id="produtoDescricao" placeholder="Opcional">
+        </div>
+        <div class="campo">
+          <label for="produtoEstoque">Estoque (unidades)</label>
+          <input type="number" id="produtoEstoque" step="1" min="0" required>
+        </div>
+        <div class="acoes-modal">
+          <button type="button" class="botao-secundario" id="cancelarProduto">Cancelar</button>
+          <button type="submit" class="botao-primario" style="width: auto;">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MODAL INSUMO ================= -->
+  <div class="fundo-modal" id="modalInsumo">
+    <div class="modal">
+      <h2 id="tituloModalInsumo">Novo Insumo</h2>
+      <form id="formInsumo">
+        <input type="hidden" id="insumoId">
+        <div class="campo">
+          <label for="insumoNome">Nome</label>
+          <input type="text" id="insumoNome" placeholder="Malte pilsen, lupulo cascade..." required>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="insumoUnidade">Unidade</label>
+            <select id="insumoUnidade" required>
+              <option value="kg">kg</option>
+              <option value="g">g</option>
+              <option value="litro">litro</option>
+              <option value="ml">ml</option>
+              <option value="unidade">unidade</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="insumoPrecoUnitario">Preco unitario (R$)</label>
+            <input type="number" id="insumoPrecoUnitario" step="0.01" min="0">
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="insumoQuantidade">Quantidade em estoque</label>
+            <input type="number" id="insumoQuantidade" step="0.01" min="0" required>
+          </div>
+          <div class="campo">
+            <label for="insumoEstoqueMinimo">Estoque minimo</label>
+            <input type="number" id="insumoEstoqueMinimo" step="0.01" min="0" required>
+          </div>
+        </div>
+        <div class="acoes-modal">
+          <button type="button" class="botao-secundario" id="cancelarInsumo">Cancelar</button>
+          <button type="submit" class="botao-primario" style="width: auto;">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+    <div class="logo-fundo">
+      <img src="./img/logo.png" height="400px" width="400px" alt="">
+  </div>
+  <script src="js/sessao.js"></script>
+  <script src="js/produtos.js"></script>
+</body>
+</html>

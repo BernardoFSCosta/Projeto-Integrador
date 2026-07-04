@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Cervejaria Maddock</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="tela-login">
+    <div class="cartao-login">
+      <div class="logo"><img src="./img/logo.png" height="150px" width="150px" alt=""></div>
+      <h1>Cervejaria Maddock</h1>
+      <p class="subtitulo">Sistema ERP</p>
+
+      <div id="mensagemErro" class="mensagem-erro"></div>
+
+      <form id="formLogin">
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="username">
+        </div>
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="botao-primario" id="botaoEntrar">Entrar</button>
+      </form>
+      <p class="dica-login">Acesso de demonstracao: admin@cervejaria.com / admin123</p>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

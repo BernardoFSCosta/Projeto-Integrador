@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Cervejaria Maddock</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="topo">
+    <div class="marca">
+      <div>
+        <h1>Cervejaria Maddock</h1>
+        <div class="subtitulo">Sistema ERP</div>
+      </div>
+    </div>
+    <div class="usuario-logado">
+      <span id="nomeUsuario">-</span>
+      <button class="botao-sair" id="botaoSair">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <h2 class="saudacao">Ola, <span id="primeiroNome">-</span></h2>
+    <p class="descricao-menu">Escolha uma área para comecar a trabalhar.</p>
+
+    <div class="grade-menu">
+      <a href="produtos.html" class="cartao-menu">
+        <h3>Controle de Produtos e Insumos</h3>
+        <p>Cadastre, edite e controle o estoque de cervejas e materia-prima da produção.</p>
+      </a>
+
+      <a href="swagger-ui.html" class="cartao-menu">
+        <h3>Documentacao da API</h3>
+        <p>Consulte e teste todos os endpoints REST diretamente pelo Swagger.</p>
+      </a>
+    </div>
+    <div class="logo-fundo">
+      <img src="./img/logo.png" height="400px" width="400px" alt="">
+    </div>
+  </main>
+
+  <script src="js/sessao.js"></script>
+</body>
+
+</html>
