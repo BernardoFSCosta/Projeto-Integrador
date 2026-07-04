@@ -24,7 +24,7 @@ cp .env.example .env   # ajuste usuário/senha do MySQL, se necessário
 npm start
 ```
 
-Crie o banco antes de iniciar (opcional, o Sequelize também cria automaticamente):
+Crie o banco antes de iniciar:
 ```sql
 CREATE DATABASE cervejaria_db;
 ```
